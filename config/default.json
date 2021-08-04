@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://Zeshan:Remember.me123@nodeexpressproject.p1vlz.mongodb.net/DeveloperConnect?retryWrites=true&w=majority",
+  "jwtSecret": "85830879"
+}
