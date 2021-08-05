@@ -1,4 +1,6 @@
 {
   "mongoURI": "mongodb+srv://Zeshan:Remember.me123@nodeexpressproject.p1vlz.mongodb.net/DeveloperConnect?retryWrites=true&w=majority",
-  "jwtSecret": "85830879"
+  "jwtSecret": "85830879",
+  "githubClientId": "641e348ebe37deb37623",
+  "githubSecret": "9d5c45930f1b3939c45a4783af6efbb60e592ade"
 }
