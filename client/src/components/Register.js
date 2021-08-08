@@ -1,8 +1,14 @@
 import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { Link, Redirect } from "react-router-dom";
+import { setAlert } from "../actions/alert_action";
+import { register } from "../actions/auth_action";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const Register = () => {
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,11 +24,16 @@ const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-      console.log("Passwords do not match");
+      dispatch(setAlert("Passwords do not match", "danger"));
     } else {
-      console.log("SUCCESS");
+      dispatch(register({ name, email, password }));
     }
   };
+
+  // Redirect if Signed up
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <Fragment>
@@ -37,7 +48,6 @@ const Register = () => {
             placeholder="Name"
             name="name"
             value={name}
-            required
             onChange={(e) => onChange(e)}
           />
         </div>
@@ -47,7 +57,6 @@ const Register = () => {
             placeholder="Email Address"
             name="email"
             value={email}
-            required
             onChange={(e) => onChange(e)}
           />
           <small className="form-text">
@@ -62,7 +71,6 @@ const Register = () => {
             name="password"
             value={password}
             onChange={(e) => onChange(e)}
-            minLength="6"
           />
         </div>
         <div className="form-group">
@@ -72,7 +80,6 @@ const Register = () => {
             name="password2"
             value={password2}
             onChange={(e) => onChange(e)}
-            minLength="6"
           />
         </div>
         <input type="submit" className="btn btn-primary" value="Register" />
