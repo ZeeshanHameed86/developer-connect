@@ -19,6 +19,7 @@ import ProfileExperience from "./ProfileExperience";
 import ProfileEducation from "./ProfileEducation";
 import ProfileGithub from "./ProfileGithub";
 import Posts from "./Posts";
+import Post from "./Post";
 
 export {
   Navbar,
@@ -42,4 +43,5 @@ export {
   ProfileEducation,
   ProfileGithub,
   Posts,
+  Post,
 };

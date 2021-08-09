@@ -15,6 +15,7 @@ import {
   Profiles,
   Profile,
   Posts,
+  Post,
 } from "./components";
 import { loadUser } from "./actions/auth_action";
 import setAuthToken from "./utils/setAuthToken";
@@ -63,6 +64,7 @@ const App = () => {
                 component={AddEducation}
               />
               <PrivateRoute exact path="/posts" component={Posts} />
+              <PrivateRoute exact path="/posts/:id" component={Post} />
             </Switch>
           </section>
         </Fragment>

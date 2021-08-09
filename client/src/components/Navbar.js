@@ -8,7 +8,6 @@ import { FaUserAlt } from "react-icons/fa";
 const Navbar = () => {
   const dispatch = useDispatch();
   const { isAuthenticated, loading } = useSelector((state) => state.auth);
-  console.log(isAuthenticated, loading);
 
   const authLinks = (
     <ul>
