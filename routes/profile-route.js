@@ -7,6 +7,7 @@ const User = require("../models/UserModel");
 const { check, validationResult } = require("express-validator");
 const request = require("request");
 const config = require("config");
+const Post = require("../models/PostModel");
 
 router.get("/me", authMiddle, async (req, res) => {
   try {
@@ -129,7 +130,8 @@ router.get("/user/:user_id", async (req, res) => {
 
 router.delete("/", authMiddle, async (req, res) => {
   try {
-    // @todo = remove users posts
+    // Remove users posts
+    await Post.deleteMany({ user: req.user.id });
 
     // Remove profile
     await Profile.findOneAndRemove({ user: req.user.id });

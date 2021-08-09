@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCurrentProfile } from "../actions/profile_action";
+import { deleteAccount, getCurrentProfile } from "../actions/profile_action";
 import Spinner from "./Spinner";
 import { FaUserAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import DashboardActions from "./DashboardActions";
+import { Experience, Education } from ".";
 
 const Dashboard = () => {
   const {
@@ -15,7 +16,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(getCurrentProfile());
-  }, []);
+  }, [getCurrentProfile]);
 
   return loading && profile === null ? (
     <Spinner />
@@ -28,6 +29,17 @@ const Dashboard = () => {
       {profile !== null ? (
         <>
           <DashboardActions />
+          <Experience experience={profile.experience} />
+          <Education education={profile.education} />
+
+          <div className="my-2">
+            <button
+              className="btn btn-danger"
+              onClick={() => dispatch(deleteAccount())}
+            >
+              <i className="fas fa-user-minus"></i>Delete My Account
+            </button>
+          </div>
         </>
       ) : (
         <>
