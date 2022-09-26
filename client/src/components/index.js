@@ -20,6 +20,7 @@ import ProfileEducation from "./ProfileEducation";
 import ProfileGithub from "./ProfileGithub";
 import Posts from "./Posts";
 import Post from "./Post";
+import { NotFound } from "./NotFound";
 
 export {
   Navbar,
@@ -44,4 +45,5 @@ export {
   ProfileGithub,
   Posts,
   Post,
+  NotFound,
 };
